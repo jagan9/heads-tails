@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>third game</title>
+    <style type="text/css">
+           @keyframes spin {
+    0% {background-image:  url('heads.png')}
+    
+    25% {background-image:  url('tails.png')}
+    
+    50% {background-image:  url('heads.png')}
+    
+    75% {background-image:  url('tails.png')}
+    
+    100% {background-image:  url('heads.png')}
+}
+          .animate{
+        background:  url('heads.png');
+         width: 227px;
+    height: 237px;
+            animation-name: spin;
+             animation-iteration-count: 2;
+            animation-duration: 1s;
+           
+          }
+     
+#img{
+    background: url("heads.png");
+    width: 227px;
+    height: 237px;
+    
+}
+*{
+    margin: 0px;
+    padding: 0px;
+   
+  
+}
+body{
+    text-align: center;
+   color: #000000 ;
+    background-color:#96FDFD;
+}
+#div1 h1{
+    font-weight: bold;
+    font-size: 2.8em;
+    text-decoration: underline;
+    padding: 20px;
+    color:  #FB06F6 ;
+}
+
+#div1 h2
+{padding: 20px;
+font-size:2em;
+}
+#NAME{
+    padding: 40px;
+    font-size: 1.4em;
+}
+#NAME #name{
+    height: 16px;
+    padding: 3px;
+}
+#submit{
+  margin: 20px;
+    padding: 10px 30px;
+    font-weight: 200px;
+    font-size: 1.2em;
+    border-width: 0px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    margin-bottom: 30px;
+}
+#submit:focus{
+    outline: none;
+}
+#submit:hover{
+background-color: blue;
+
+}
+#tails{
+  margin: 20px;
+    padding: 10px 30px;
+    font-weight: 200px;
+    font-size: 1.2em;
+    border-width: 0px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    margin-bottom: 30px;
+}
+#tails:focus{
+    outline: none;
+}
+#tails:hover{
+background-color: blue;
+
+}
+#heads{
+  margin: 20px;
+    padding: 10px 30px;
+    font-weight: 200px;
+    font-size: 1.2em;
+    border-width: 0px;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    margin-bottom: 30px;
+}
+#heads:focus{
+    outline: none;
+}
+#heads:hover{
+background-color: blue;
+
+}
+
+
+#div1 p{
+    font-style:italic;
+
+    margin-bottom: 0px;
+}
+
+
+    </style>
+
+  
+</head>
+<body>
+    <div id="div1">
+       <h1 > Welcome to my third game.</h1>
+       <h2>To win the game score 15 points. By selecting heads or tails.&#128517;</h2>
+      <div id="NAME"><label>NAME</label>
+       <input id="name" type="text" placeholder="enter name.... "></div> </div> 
+<input id="submit" type="submit" value="let's play">
+       <p id="p11">all the best.</p>
+   
+
+
+
+
+
+    <div id="div2" style="display: none;"><h1 style="font-size: 2.6em;text-decoration: underline;padding: 10px">To win, score 15 points.</h1>
+    <h3 style="font-size: 1.6em; padding: 10px;color: #060CFB"><span id="nameofplayer"></span> selected : <span id="player-choose" style="margin-right: 30px;"></span>
+    computer selected : <span id="computer-choose"></span></h3>
+    <h2 id="winnerboard" style="padding: 10px;"></h2>
+    <img  id="img" >
+    <p id="p" style="font-size: 1.5em; color: orange;padding: 10px;color: black;"></p>
+    <h1 style="padding: 7px;">scores</h1>
+    <h2 style="padding: 10px;"><span id="nameofplayer1"></span>  : <span id="player-score" style="margin-right: 20px;color: red"></span>
+        computer : <span id="computer-score" style="color: red"></span></h2>
+
+    <h3  id="select" style="padding: 10px;">select heads or tails &#128527;</h3>
+    <button id="heads" >head</button>
+    <button id="tails">tail</button></div>
+
+
+
+
+<script>
+    var computerscore=0;
+    var playerscore=0;
+   var computerselect;
+    var playerchoose;
+    var playerselect;
+    var div1=document.getElementById("div1")
+var name=document.getElementById("name");
+
+ var submit=document.getElementById("submit").addEventListener('click',functionshow);
+    function functionshow(){
+        name=document.getElementById("name").value;
+        $("#nameofplayer").html(name);
+         $("#nameofplayer1").html(name);
+        if (name=="") {
+            alert("please enter your name.");
+        }
+        else{
+             document.getElementById("player-score").innerHTML="0";
+             document.getElementById("computer-score").innerHTML="0";
+              $("#heads").show();
+              computerscore=0;
+              playerscore=0;
+         $("#tails").show();
+          $("#select").show();
+            $("#winnerboard").hide();
+            $("#div1").hide();
+            $("#p11").hide();
+            $("#submit").hide();
+ $("#div2").show();}
+    }
+
+
+
+
+
+
+
+    
+var button=document.querySelectorAll("button");
+
+button.forEach(function (button) {
+    button.addEventListener('click',function(e){
+        playerchoose=e.target.id;
+        var com1=Math.round(Math.random());
+        var com=Math.round(Math.random());
+        if (com==1) {
+            computerselect="heads";
+        }
+        else{
+             computerselect="tails";
+        }
+
+        if (playerchoose=="heads") {
+            playerselect=1;
+        }
+        else{
+            playerselect=0;
+        }
+var spin=document.querySelector("#img");
+spin.classList.add('animate');
+
+        display(playerchoose,computerselect);
+        displayrandom(com1);
+
+
+setTimeout(function(){
+    if(playerscore<15 &&computerscore<15){
+display2(com1,playerselect,com);}
+document.getElementById("img").classList.remove('animate');
+},1000)
+
+    })
+})
+
+
+function display(playerchoose,computerselect){
+    const user=document.getElementById('player-choose');
+    const c=document.getElementById('computer-choose');
+    if (playerchoose==="heads") {
+      user.style.color="red";
+    }
+     if (playerchoose==="tails") {
+        user.style.color="#8908FA  ";
+    }
+     if (computerselect==="heads") {
+        c.style.color="red";
+    }
+     if (computerselect==="tails") {
+      c.style.color="#8908FA ";
+    }
+
+$("#player-choose").html( `${playerchoose}`);
+$("#computer-choose").html(`${computerselect}`);
+
+}
+
+
+function displayrandom(com1){
+var img=document.getElementById('img');
+if(com1==1){
+    img.style.backgroundImage= "url('heads.png')";
+    
+}
+else{
+    img.style.backgroundImage = "url('tails.png')";
+     
+}
+}
+ function display2(com1,playerselect,com){
+    var pscore=document.getElementById("player-score");
+    var cscore=document.getElementById("computer-score");
+    var winner=document.getElementById("winnerboard");
+ if (com1==1){var p=document.getElementById("p");
+    p.innerHTML="heads";}
+    else{var p=document.getElementById("p");
+    p.innerHTML="tails";
+
+    }
+    if(com1===playerselect)
+        playerscore++;
+    if(com1===com)
+        computerscore++;
+
+
+    pscore.innerHTML=playerscore;
+    cscore.innerHTML=computerscore;
+    if(playerscore==5 && computerscore==5){
+        winner.innerHTML="it's tie &#128565;";
+         $("#winnerboard").show();
+         $("#heads").hide();
+         $("#tails").hide();
+         $("#select").hide();
+     document.getElementById("submit").value="retry";
+     $("#submit").show();
+
+    }
+    else if(playerscore==5){
+        name=document.getElementById("name").value;
+        $("#heads").hide();
+         $("#tails").hide();
+          $("#select").hide();
+        winner.innerHTML=`${name}  won!!!&#128539;`;
+        $("#winnerboard").show();
+        document.getElementById("submit").value="retry";
+     $("#submit").show();
+
+    }
+    else if(computerscore==5){
+        $("#heads").hide();
+         $("#tails").hide();
+          $("#select").hide();
+        winner.innerHTML="computer won!! &#128553;";
+        $("#winnerboard").show();
+         document.getElementById("submit").value="retry";
+     $("#submit").show();
+
+    }
+ }
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
